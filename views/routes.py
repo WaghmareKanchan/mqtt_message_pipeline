@@ -1,10 +1,3 @@
-# ═══════════════════════════════════════════════════
-#  views/routes.py
-#  VIEW — Flask API routes
-#  Only handles HTTP request/response
-#  Calls Controller for all business logic
-# ═══════════════════════════════════════════════════
-
 from flask import Blueprint, jsonify, request
 
 # Blueprint groups all routes
@@ -36,9 +29,6 @@ def home():
     }), 200
 
 # ── POST /messages ───────────────────────────────────
-#  Called AUTOMATICALLY by MQTTController via HTTP
-#  Never call this manually
-# ────────────────────────────────────────────────────
 @message_bp.route("/messages", methods=["POST"])
 def save():
     body         = request.get_json()

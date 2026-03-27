@@ -1,9 +1,3 @@
-# ═══════════════════════════════════════════════════
-#  models/message_model.py
-#  MODEL — handles all MongoDB operations
-#  Only talks to database — no business logic here
-# ═══════════════════════════════════════════════════
-
 from pymongo import MongoClient
 from bson import ObjectId
 from datetime import datetime

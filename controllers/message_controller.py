@@ -1,10 +1,3 @@
-# ═══════════════════════════════════════════════════
-#  controllers/message_controller.py
-#  CONTROLLER — business logic
-#  Sits between MQTT/Routes and the Model
-#  Processes data before saving or returning it
-# ═══════════════════════════════════════════════════
-
 import json
 import requests as http
 from datetime import datetime
@@ -28,7 +21,7 @@ class MessageController:
         print(f"   topic   : {topic}")
         print(f"   raw     : {raw}")
 
-        # step 1 — parse JSON dynamically
+        
         try:
             data = json.loads(raw)
             print(f" [CONTROLLER] JSON parsed: {data}")
@@ -36,10 +29,8 @@ class MessageController:
             data = {"raw_message": raw}
             print(f"  [CONTROLLER] Plain text wrapped")
 
-        # step 2 — add topic dynamically
         data["mqtt_topic"] = topic
 
-        # step 3 — call OWN API dynamically (not hardcoded save)
         print(f" [CONTROLLER] Calling POST {OWN_API} dynamically...")
         try:
             response = http.post(
